@@ -1,0 +1,174 @@
+package selenium_practice_set;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+public class ActionClass {
+
+    WebDriver driver=new EdgeDriver();
+    /**
+     * right click -->contextClick(element).perform();
+     * double click
+     * mouse hover  --->moveToElement(element).perform();
+     * drag and drop
+     * Actions -->predefined class provided by selenium
+     *
+     * build() --create an action
+     * perform() -- build and complete action
+     * when ever we came to know scenario where we need to build actions first then perform after certain operation we have
+     * use both build().perform()
+     */
+    @Test
+    public void mouseHover()
+    {
+        driver.get("https://demo-opencart.com/");
+        driver.manage().window().maximize();
+
+        WebElement desktop = driver.findElement(By.xpath("//a[normalize-space()='Desktops']"));
+        WebElement mac=driver.findElement(By.xpath("//a[normalize-space()='Mac (2)']"));
+
+        Actions act=new Actions(driver);
+       // act.moveToElement(desktop).moveToElement(mac).click().build().perform();
+        act.moveToElement(desktop).moveToElement(mac).click().perform();
+    }
+
+    @Test
+    public void rightClick()
+    {
+        driver.get("https://swisnl.github.io/jQuery-contextMenu/demo.html");
+        driver.manage().window().maximize();
+
+        WebElement button=driver.findElement(By.xpath("//span[normalize-space()='right click me']"));
+        Actions act=new Actions(driver);
+
+        act.contextClick(button).build().perform();
+
+        // click on copy
+        driver.findElement(By.xpath("//span[normalize-space()='Copy']")).click();
+        //close alert
+        driver.switchTo().alert().accept();
+
+    }
+    @Test
+    public void doubleClick()
+    {
+        driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3");
+        driver.manage().window().maximize();
+
+        driver.switchTo().frame(driver.findElement(By.id("iframeResult")));
+
+        WebElement field1 = driver.findElement(By.xpath("//input[@id='field1']"));
+        WebElement field2 = driver.findElement(By.xpath("//input[@id='field2']"));
+        WebElement btn=driver.findElement(By.xpath("//button[normalize-space()='Copy Text']"));
+
+        field1.clear();
+        field1.sendKeys("Hi Shivam");
+        Actions act=new Actions(driver);
+
+        act.doubleClick(btn).build().perform();
+
+        if (field2.getAttribute("value").equals("Hi Shivam")) // later on we can use Assert class
+        {
+            System.out.println("Text copied");
+        }
+        else
+        {
+            System.out.println("Text not copied properly");
+        }
+    }
+    @Test
+    public void dragAndDrop()
+    {
+        driver.get("https://testautomationpractice.blogspot.com/");
+        driver.manage().window().maximize();
+        WebElement source=driver.findElement(By.id("draggable"));
+        WebElement target= driver.findElement(By.id("droppable"));
+
+        Actions act=new Actions(driver);
+        act.dragAndDrop(source, target).perform();
+
+    }
+
+    /**
+     * keyboard actions.
+     */
+    @Test
+    public void keyboardActions()
+    {
+        driver.get("https://text-compare.com/");
+        driver.manage().window().maximize();
+
+        WebElement textArea1 = driver.findElement(By.id("inputText1"));
+        textArea1.sendKeys("Hi Shivam How Are you?");
+
+        Actions act=new Actions(driver);
+
+        // ctr+A  -->select text
+        act.keyDown(Keys.CONTROL).sendKeys("A").keyUp(Keys.CONTROL).perform();
+
+        // ctrl+C --->copy
+        act.keyDown(Keys.CONTROL).sendKeys("C").keyUp(Keys.CONTROL).perform();
+
+        // Tab    -->move to next text area
+
+        act.keyDown(Keys.TAB).keyUp(Keys.TAB).perform();
+
+        // ctrl+V --->paste text
+        act.keyDown(Keys.CONTROL).sendKeys("V").keyUp(Keys.CONTROL).perform();
+
+    }
+    @Test
+    public void openLinkInNewTab()
+    {
+        driver.get("https://demo.nopcommerce.com/register?returnUrl=%2F");
+        driver.manage().window().maximize();
+
+        WebElement register = driver.findElement(By.xpath("//a[@class='ico-register']"));
+        //register.click(); //it will open in same tab
+
+        Actions act=new Actions(driver);
+        act.keyDown(Keys.CONTROL).click(register).keyUp(Keys.CONTROL).perform(); // open in new tab
+
+        //switching to child tab
+        Set<String> ids = driver.getWindowHandles();
+        ArrayList<String> al=new ArrayList<>(ids);
+        String childTabId = al.get(1);
+
+        driver.switchTo().window(childTabId);
+        driver.findElement(By.id("gender-male")).click();
+
+        //switching back to home page
+        driver.switchTo().window(al.get(0));
+
+    }
+
+    @Test
+    public void tabsAndWindows()
+    {
+        driver.manage().window().maximize();
+        driver.get("https://demo.nopcommerce.com/register?returnUrl=%2F");
+        driver.switchTo().newWindow(WindowType.TAB);  // available on selenium 4 onwards to open new tab
+        driver.get("https://testautomationpractice.blogspot.com/");
+        driver.switchTo().newWindow(WindowType.WINDOW); // to open new window
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); // driver focus on second window
+
+        Set<String> ids = driver.getWindowHandles();
+
+        for (String id:ids)
+        {
+            driver.switchTo().window(id); // switch to current window
+            if (driver.getTitle().contains("nopCommerce"))
+            {
+                driver.findElement(By.id("gender-male")).click();
+                break;
+            }
+        }
+
+    }
+
+}
