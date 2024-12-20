@@ -7,10 +7,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 import java.util.List;
 
-public class Locators {
+public class Locators_Chapter1 {
     WebDriver driver;
     // All locators are present inside By class
 
