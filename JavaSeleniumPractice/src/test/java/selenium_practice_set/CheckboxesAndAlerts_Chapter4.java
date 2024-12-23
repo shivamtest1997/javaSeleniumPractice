@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class CheckboxesAndAlerts {
+public class CheckboxesAndAlerts_Chapter4 {
 
     WebDriver driver=new EdgeDriver();
     /**
@@ -24,6 +24,7 @@ public class CheckboxesAndAlerts {
 
         driver.get("https://testautomationpractice.blogspot.com/");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // 1.select specific checkbox
@@ -31,8 +32,8 @@ public class CheckboxesAndAlerts {
         sundayCheckbox.click();
         sundayCheckbox.isSelected();
         driver.findElement(By.xpath("//input[@id='sunday']")).click();
-        //2.selecting all checkboxes
 
+        //2.selecting all checkboxes
         List<WebElement> checkboxes=driver.findElements(By.xpath("//label[text()='Days:']/parent::div//input[@class='form-check-input' and @type='checkbox']"));
         for (WebElement box:checkboxes)
         {
@@ -40,8 +41,9 @@ public class CheckboxesAndAlerts {
         }
 
         Thread.sleep(4); // to visible actions on UI otherwise no need here
+
         //3. Un select last two checkboxes (last two =total(7)-how many deselect from last 2=5)
-        for(int i=5;i<checkboxes.size();i++)
+        for(int i=checkboxes.size()-1;i>=2;i--)
         {
             wait.until(ExpectedConditions.elementToBeClickable(checkboxes.get(i))).click();
         }
@@ -63,6 +65,17 @@ public class CheckboxesAndAlerts {
 
     /**
      * alerts/popups
+     * To handle alert we have two approaches :
+     * 1)using switchTo()
+     *          driver.switchTo().alert().accept(); --close alert using OK button
+     *          driver.switchTo().alert().dismiss() -->close alert using cancel button
+     *          driver.switchTo().alert().getText() -->to get text of alert pop up
+     *          driver.switchTo().alert().sendKeys(String); --> to enter text in input box
+     * 2)using explicit wait :
+     *         wait.until(ExpectedConditions.alertIsPresent().accept());
+     *         wait.until(ExpectedConditions.alertIsPresent().dismiss());
+     *         wait.until(ExpectedConditions.alertIsPresent().sendKeys(String));
+     *         wait.until(ExpectedConditions.alertIsPresent().getText();
      */
     @Test
     public void alerts() throws InterruptedException {
@@ -74,7 +87,8 @@ public class CheckboxesAndAlerts {
         driver.findElement(By.xpath("//button[contains(@onclick,'jsAlert')]")).click();
 
         Alert jsAlert = driver.switchTo().alert();
-        System.out.println(jsAlert.getText());
+        String alertText=jsAlert.getText();
+        System.out.println(alertText);
         jsAlert.accept();
 
         Thread.sleep(4000);
@@ -104,15 +118,14 @@ public class CheckboxesAndAlerts {
         Thread.sleep(5000);
         wait.until(ExpectedConditions.alertIsPresent()).accept();
 
-        // 4. Authentication alert
-        // https://the-internet.herokuapp.com/basic_auth
-        // https://username:password@https://the-internet.herokuapp.com/basic_auth  --Syntax
-        // https://admin:admin@https://the-internet.herokuapp.com/basic_auth
+//         4. Authentication alert
+//         https://the-internet.herokuapp.com/basic_auth
+//         http://username:password@the-internet.herokuapp.com/basic_auth  --Syntax
+//         http://admin:admin@the-internet.herokuapp.com/basic_auth
 
-        driver.navigate().to("admin:admin@https://the-internet.herokuapp.com/basic_auth");
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//p[normalize-space()='Congratulations! You must have the proper credentials.']")));
-
-
+       // driver.get("https://the-internet.herokuapp.com/basic_auth"); // you will get authentication pop up
+        driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Congratulations! You must have the proper credentials.']")));
     }
 
     @AfterClass

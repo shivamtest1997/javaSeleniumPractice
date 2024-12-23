@@ -2,13 +2,15 @@ package selenium_practice_set;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-public class ActionClass {
+public class ActionClass_Chapter8 {
 
     WebDriver driver=new EdgeDriver();
     /**
@@ -18,10 +20,10 @@ public class ActionClass {
      * drag and drop
      * Actions -->predefined class provided by selenium
      *
-     * build() --create an action
-     * perform() -- build and complete action
+     * build() -->create an action
+     * perform() --> build and complete action
      * when ever we came to know scenario where we need to build actions first then perform after certain operation we have
-     * use both build().perform()
+     * use both build() and perform()
      */
     @Test
     public void mouseHover()
@@ -30,20 +32,25 @@ public class ActionClass {
         driver.manage().window().maximize();
 
         WebElement desktop = driver.findElement(By.xpath("//a[normalize-space()='Desktops']"));
-        WebElement mac=driver.findElement(By.xpath("//a[normalize-space()='Mac (2)']"));
+        WebElement mac=driver.findElement(By.xpath("//a[normalize-space()='Mac (0)']"));
 
         Actions act=new Actions(driver);
        // act.moveToElement(desktop).moveToElement(mac).click().build().perform();
         act.moveToElement(desktop).moveToElement(mac).click().perform();
+        driver.findElement(By.xpath("//h2[text()='Desktops']")).isDisplayed();
     }
 
+    /**
+     * Actions act=new Actions(driver);
+     * act.contextClick(WebElement).build().perform()-->is used to Right Click on WebElement
+     */
     @Test
     public void rightClick()
     {
         driver.get("https://swisnl.github.io/jQuery-contextMenu/demo.html");
         driver.manage().window().maximize();
 
-        WebElement button=driver.findElement(By.xpath("//span[normalize-space()='right click me']"));
+        WebElement button=driver.findElement(By.cssSelector("span.context-menu-one"));
         Actions act=new Actions(driver);
 
         act.contextClick(button).build().perform();
@@ -51,16 +58,24 @@ public class ActionClass {
         // click on copy
         driver.findElement(By.xpath("//span[normalize-space()='Copy']")).click();
         //close alert
-        driver.switchTo().alert().accept();
+        String alertText=driver.switchTo().alert().getText();
+        Assert.assertEquals(alertText, "clicked: copy");
+        driver.switchTo().alert().accept(); // close alert pop up
 
     }
+
+    /**
+     * Actions act=new Actions(driver);
+     * act.doubleClick(WebElement).build().perform();
+     */
     @Test
     public void doubleClick()
     {
         driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3");
         driver.manage().window().maximize();
 
-        driver.switchTo().frame(driver.findElement(By.id("iframeResult")));
+        //switch to iframe use id or name or locator
+        driver.switchTo().frame("iframeResult");
 
         WebElement field1 = driver.findElement(By.xpath("//input[@id='field1']"));
         WebElement field2 = driver.findElement(By.xpath("//input[@id='field2']"));
@@ -69,18 +84,18 @@ public class ActionClass {
         field1.clear();
         field1.sendKeys("Hi Shivam");
         Actions act=new Actions(driver);
+        Action doubleClick = act.doubleClick(btn).build();
+        doubleClick.perform();
+        String field2Text = field2.getAttribute("value"); //getText() method is not used here because getText()always capture inner text
+        Assert.assertEquals(field2Text, "Hi Shivam");
 
-        act.doubleClick(btn).build().perform();
-
-        if (field2.getAttribute("value").equals("Hi Shivam")) // later on we can use Assert class
-        {
-            System.out.println("Text copied");
-        }
-        else
-        {
-            System.out.println("Text not copied properly");
-        }
     }
+
+    /**
+     * Actions act=new Actions(driver);
+     * act.dragAndDrop(source WebElement,destination WebElement).build().perform();
+     * act.dragAndDropBy(WebElement,xOffset,yOffset).build().perform(); -->to move the slider
+     */
     @Test
     public void dragAndDrop()
     {
@@ -91,11 +106,25 @@ public class ActionClass {
 
         Actions act=new Actions(driver);
         act.dragAndDrop(source, target).perform();
-
+        //slider
+        WebElement sliderRightPoint=driver.findElement(By.xpath("//div[@id='slider-range']/span[2]"));
+        Point locationOfSliderPoint = sliderRightPoint.getLocation(); //(x,y)
+        System.out.println("current position is :"+locationOfSliderPoint);
+        act.dragAndDropBy(sliderRightPoint, 100, 0).perform();
+        System.out.println("Location after movement"+sliderRightPoint.getLocation());
     }
+    /**
+     * Action vs Actions
+     * Actions --> class ,will be used to perform mouse actions
+     * Action -->Interface, will be used to store created actions.
+     * Example :
+     *         Actions act=new Actions(driver);
+     *         Action doubleClick = act.doubleClick(btn).build();
+     *         doubleClick.perform();
+     */
 
     /**
-     * keyboard actions.
+     * keyboard actions using Actions Class.
      */
     @Test
     public void keyboardActions()
@@ -120,8 +149,20 @@ public class ActionClass {
 
         // ctrl+V --->paste text
         act.keyDown(Keys.CONTROL).sendKeys("V").keyUp(Keys.CONTROL).perform();
+        //clear text in second area
+        act.keyDown(Keys.CONTROL).sendKeys("A").keyUp(Keys.CONTROL).keyDown(Keys.BACK_SPACE).keyUp(Keys.BACK_SPACE).build().perform();
+        //clear text in first area
+        act.keyDown(Keys.SHIFT).keyDown(Keys.TAB)
+                .keyDown(Keys.BACK_SPACE).keyUp(Keys.BACK_SPACE)
+                .keyUp(Keys.TAB)
+                .keyUp(Keys.SHIFT)
+                .build().perform();
 
     }
+
+    /**
+     * This Can be achieve using Keyboard actions
+     */
     @Test
     public void openLinkInNewTab()
     {
@@ -147,6 +188,11 @@ public class ActionClass {
 
     }
 
+    /**
+     * Tabs and Windows
+     * driver.switchTo.newWindow(WindowType.TAB); -->This will open new tab in same window
+     * driver.switchTo.newWindow(WindowType.WINDOW);
+     */
     @Test
     public void tabsAndWindows()
     {
@@ -158,7 +204,7 @@ public class ActionClass {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); // driver focus on second window
 
         Set<String> ids = driver.getWindowHandles();
-
+        System.out.println(ids);
         for (String id:ids)
         {
             driver.switchTo().window(id); // switch to current window
@@ -168,7 +214,5 @@ public class ActionClass {
                 break;
             }
         }
-
     }
-
 }

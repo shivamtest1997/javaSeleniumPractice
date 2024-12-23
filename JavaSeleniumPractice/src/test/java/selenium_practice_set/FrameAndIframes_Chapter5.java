@@ -7,12 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.Test;
 
-public class FrameAndIframes {
+public class FrameAndIframes_Chapter5 {
 
     WebDriver driver=new EdgeDriver();
     /**
      * driver.switchTo().frame(argument);
      * argument -->id ,name ,WebElement
+     * driver.switchTo().defaultContent() -->switching to main tab
      */
     @Test
     public void frames()
@@ -20,9 +21,12 @@ public class FrameAndIframes {
         driver.manage().window().maximize();
         driver.get("https://ui.vision/demo/webtest/frames/");
 
+        //locate frame first then switch to frame to locate require WebElement
         WebElement frame1=driver.findElement(By.xpath("//frame[contains(@src,'frame_1')]"));
         driver.switchTo().frame(frame1);
         driver.findElement(By.xpath("//input[@name='mytext1']")).sendKeys("Hello Frame 1....!");
+
+
         driver.switchTo().defaultContent(); //after doing work on frame we should switch to main page
 
         WebElement frame2=driver.findElement(By.xpath("//frame[contains(@src,'frame_2')]"));

@@ -12,10 +12,13 @@ import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
 
-public class DatePickersCalenders {
+public class DatePickersCalenders_Chapter7 {
 
     WebDriver driver = new EdgeDriver();
 
+    // 1.capture current month and year
+    // 2.use while loop to compare current month and year with expected month and year
+    // 3.if it matches break the loop or click on next arrow until we get expected month and year
 
     /**
      * This method will select future date.
@@ -26,14 +29,20 @@ public class DatePickersCalenders {
      * @param date
      */
     public void selectFutureDate(WebDriver driver, String month, String year, String date) {
+
         while (true) {
             // Actual Data
             String currentMonth = driver.findElement(By.cssSelector(".ui-datepicker-month")).getText();
             String currentYear = driver.findElement(By.cssSelector(".ui-datepicker-year")).getText();
-
-            if (currentMonth.equals(month) && currentYear.equals(year)) {
-                break;
+            try{
+                if (currentMonth.equals(month) && currentYear.equals(year)) {
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println(e);
             }
+
             driver.findElement(By.xpath("//span[text()='Next']")).click(); //Next
         }
         List<WebElement> dates = driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td/a"));
@@ -63,7 +72,7 @@ public class DatePickersCalenders {
             if (currentMonth.equals(month) && currentYear.equals(year)) {
                 break;
             }
-            driver.findElement(By.xpath("//span[text()='Previous']")).click(); //Next
+            driver.findElement(By.xpath("//span[text()='Previous']")).click(); //Previous
         }
         List<WebElement> dates = driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td/a"));
         for (WebElement d : dates) {
@@ -74,6 +83,9 @@ public class DatePickersCalenders {
         }
     }
 
+    /**
+     * jquery date picker
+     */
     @Test
     public void datePicker1() {
         driver.get("https://jqueryui.com/datepicker/");
@@ -85,15 +97,15 @@ public class DatePickersCalenders {
         driver.findElement(By.id("datepicker")).sendKeys("02/15/2024");
 
         // expected
-        String month = "May";
+        String month = "November";
         String year = "2025";
-        String date = "15";
+        String date = "10";
 
         selectFutureDate(driver, month, year, date);
     }
 
     /**
-     * This method is used to concert string month to month object.
+     * This method is used to convert string month to month object.
      *
      * @param month
      * @return
