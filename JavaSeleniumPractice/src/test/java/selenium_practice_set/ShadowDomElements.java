@@ -10,8 +10,9 @@ import org.testng.annotations.Test;
 public class ShadowDomElements {
     WebDriver driver=new EdgeDriver();
     /**
-     * Document >> Shadow host>> shadow root
-     * We can't locate element using x path we need to locate
+     *
+     * Document >> Shadow host>> shadow root >>Elements (div which holds shadow root is called as shadow host)
+     * We can't locate element using xpath we need to locate
      * using css selector
      * Shadow Host-->Element holding shadow root
      *
@@ -21,7 +22,8 @@ public class ShadowDomElements {
         driver.manage().window().maximize();
         driver.get("https://dev.automationtesting.in/shadow-dom");
 
-        SearchContext shadowRoot = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
+        //shadowElement
+        SearchContext shadowRoot = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot(); //shadowHost.getShadowRoot
 
         WebElement element1 = shadowRoot.findElement(By.cssSelector("#shadow-element"));
         System.out.println(element1.getText());
@@ -29,8 +31,8 @@ public class ShadowDomElements {
         // nested shadow element
         SearchContext shadowRoot00 = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
         SearchContext shadowRoot11 = shadowRoot00.findElement(By.cssSelector("#inner-shadow-dom")).getShadowRoot();
-        WebElement nestedElement;
-        nestedElement = shadowRoot11.findElement(By.cssSelector("#nested-shadow-element"));
+
+        WebElement nestedElement =shadowRoot11.findElement(By.cssSelector("#nested-shadow-element"));
         System.out.println(nestedElement.getText());
 
         // multi-nested shadow element
