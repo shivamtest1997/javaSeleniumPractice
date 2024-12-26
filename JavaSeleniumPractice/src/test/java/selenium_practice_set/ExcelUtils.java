@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class ExcelUtils {
 
+    //create variable at once and use wherever required
     public static FileInputStream fis;
     public static FileOutputStream fos;
     public static XSSFWorkbook workbook;
@@ -27,14 +28,15 @@ public class ExcelUtils {
 
     /**
      * this method will return row counts.
-     * @param xfile
+     * @param xlFilePath
      * @param xlsheet
      * @return
      * @throws IOException
+     * This method is static so that it can be called directly without creating object.
      */
-    public static int getRowCount(String xfile,String xlsheet) throws IOException {
+    public static int getRowCount(String xlFilePath,String xlsheet) throws IOException {
 
-        fis=new FileInputStream(xfile);
+        fis=new FileInputStream(xlFilePath);
         workbook=new XSSFWorkbook(fis);
         sheet=workbook.getSheet(xlsheet);
         int rowCount = sheet.getLastRowNum();
@@ -44,16 +46,16 @@ public class ExcelUtils {
     }
 
     /**
-     * This method will return cell count.
-     * @param xfile
+     * This method will return cell numbers
+     * @param xlFilePath
      * @param xlsheet
      * @param rowNo
      * @return
      * @throws IOException
      */
-    public static int getRowCount(String xfile,String xlsheet,int rowNo) throws IOException {
+    public static int getCellCount(String xlFilePath,String xlsheet,int rowNo) throws IOException {
 
-        fis=new FileInputStream(xfile);
+        fis=new FileInputStream(xlFilePath);
         workbook=new XSSFWorkbook(fis);
         sheet=workbook.getSheet(xlsheet);
         int cellCount = sheet.getRow(rowNo).getLastCellNum();
@@ -71,22 +73,22 @@ public class ExcelUtils {
      * @return data
      * @throws IOException
      */
-    public static String getCellData(String xlfile,String xlsheet,int rowNo,int colNo) throws IOException {
-        fis=new FileInputStream(xlfile);
+    public static String getCellData(String xlFilePath,String xlsheet,int rowNo,int colNo) throws IOException {
+        fis=new FileInputStream(xlFilePath);
         workbook=new XSSFWorkbook(fis);
         sheet=workbook.getSheet(xlsheet);
         row=sheet.getRow(rowNo);
         cell=row.getCell(colNo);
         String data ;
-
+        // Note : if data not present in cell it may throw exception DataNotFoundException to handle this use tryCatch
         try {
-
            // data=cell.toString();
+           // or
             DataFormatter formatter=new DataFormatter();
-            data=formatter.formatCellValue(cell);
+            data=formatter.formatCellValue(cell);// Return the formatted cell value as String regardless of cell type.
         }catch (Exception e)
         {
-                data="";
+            data=""; // make data value empty
         }
         workbook.close();
         fis.close();
@@ -103,12 +105,13 @@ public class ExcelUtils {
      * @throws IOException
      */
     public static void setCellData(String xlfile,String xlsheet,int rowNo,int cellNo,String data) throws IOException {
-
+        //read data
         fis=new FileInputStream(xlfile);
         workbook=new XSSFWorkbook(fis);
         sheet=workbook.getSheet(xlsheet);
         row=sheet.getRow(rowNo);
 
+        //write data in same sheet
         cell=row.createCell(cellNo);
         cell.setCellValue(data);
         fos=new FileOutputStream(xlfile);
@@ -135,7 +138,7 @@ public class ExcelUtils {
         cell=row.getCell(cellNo);
 
         style=workbook.createCellStyle();
-        style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
+        style.setFillForegroundColor(IndexedColors.BLUE.getIndex());
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
         cell.setCellStyle(style);
@@ -147,7 +150,7 @@ public class ExcelUtils {
 
     }
     /**
-     * This method will fill green colour
+     * This method will fill red  colour
      * @param xlfile
      * @param xlsheet
      * @param rowNo
