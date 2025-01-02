@@ -1,6 +1,6 @@
-package java_Practice_Set.logicalPrograms;
+package java_Practice_Set.logicalPrograms.StringAndArray;
 import java.util.Arrays;
-public class StringAnagramCheck {
+public class ProgramToCheckAnagramOfStrings {
     /**
      * Anagram of string is nothing but string having same
      * characters and prepare word in reverse order

@@ -3,7 +3,20 @@ package java_Practice_Set.collection_Framework;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashMapTest {
+/**
+ * In Map we can store data in key-value pair
+ * Map Interface implemented by two classes HashMap and HashTable
+ * every key-value pair is called as entry so map is also called as collection of entries.
+ * put(key,value) -->to add data
+ * get(key) -->to retrieve data from map
+ * remove(key)-->to remove data from map
+ * containsKey(key) --to check key is present
+ * containsValue(value)--to check value is present.
+ * keySet()--return keys in set
+ * values()--return collection of values
+ *
+ */
+public class HashMapTest_6 {
     public static void main(String[] args) {
 
         HashMap<Integer,String> hm=new HashMap<Integer,String>();
@@ -16,7 +29,7 @@ public class HashMapTest {
         hm.put(102, "Sachin"); //Duplicate keys are not allowed here 102 replaced as Sachin
 
         System.out.println(hm);
-        System.out.println(hm.get(104));
+        System.out.println("Get data from map "+hm.get(104));
         hm.remove(104);
         System.out.println("Map after removing object : "+hm);
         System.out.println(hm.containsKey(101));

@@ -2,37 +2,47 @@ package java_Practice_Set.collection_Framework;
 
 import java.util.*;
 
-public class ArrayListTest {
+/**
+ * ArrayList :it is a class present inside java.util package which implements methods from list interface
+ * Features:
+ *  ArrayList is growable in nature
+ *  Insertion order is preserved
+ *  By default capacity is 10
+ *  duplicates are allowed
+ * Use : ArrayList is preferred for frequent getting(Retrieve) operations
+ */
+public class ArrayListTest_2 {
 
     public static void main(String[] args) {
+        //ways to create ArrayList Object
 
 //        ArrayList al=new ArrayList();                        //Heterogeneous data
 //        ArrayList<Integer> al1=new ArrayList<Integer>();     //Homgenious data
 //        ArrayList<String> al2=new ArrayList<String>();
 //        List al3=new ArrayList();
 
-        ArrayList<Object> al=new ArrayList<Object>();
+        ArrayList al=new ArrayList(); //for storing Heterogeneous data
 
         al.add("Shivam");
         al.add(200);
         al.add('a');
         al.add(true);
-        System.out.println(String.valueOf(al));
+        System.out.println(al);
         System.out.println("Size of arraylist "+al.size());
 
         al.add(2, "test");
-        System.out.println(String.valueOf(al));
+        System.out.println("Arraylist After adding element at index position :"+al);
 
         al.remove(4);
-        System.out.println("After removing element true from arraylist "+al);
+        System.out.println("After removing element from arraylist "+al);
 
-        ArrayList<String> str=new ArrayList<String>();
+        ArrayList<String> str=new ArrayList<String>(); //To store homogeneous data
         str.add("Rasika");
         str.add("Pratik");
         str.add("Shubham");
         str.add("Rajeev");
 
-        al.addAll(str);
+        al.addAll(str); // to store one collection to other
         System.out.println("After adding collection into original arrayList :"+al);
         System.out.println("To retrieve element from third position is :"+al.get(2));
 
@@ -64,6 +74,7 @@ public class ArrayListTest {
         {
             System.out.println(it.next());
         }
+        System.out.println("-----------------------------------------------------");
 
         //sort element of an arrayList
         Collections.sort(str);
@@ -73,7 +84,7 @@ public class ArrayListTest {
         str.sort(Collections.reverseOrder());
         System.out.println(str);
 
-        // convert array to arrayList
+        // convert array to arrayList use method Arrays.asList(arr);
 
         Double[] d =new Double[5];
         d[0]=20.5;
@@ -81,15 +92,23 @@ public class ArrayListTest {
         d[2]=0.5;
         d[3]=44.5;
         d[4]=99.5;
+        System.out.println("---------print Array---------");
         for(Double dd:d)
         {
             System.out.println(dd);
         }
 
+        System.out.println("-------print arraylist----");
         ArrayList<Double> ddList=new ArrayList<Double>(Arrays.asList(d));
+        ddList.add(10.5);
+        ddList.add(4,5.5);
         System.out.println(ddList);
 
-
+        System.out.println("-------Convert Arraylist to Array----");
+        Object[] ddArr=ddList.toArray();
+        for(Object ob:ddArr) {
+            System.out.println(ob);
+        }
 
     }
 

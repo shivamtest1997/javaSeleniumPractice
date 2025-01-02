@@ -2,10 +2,16 @@ package java_Practice_Set.collection_Framework;
 
 import java.util.HashSet;
 
-public class HashSetTest {
+/**
+ * HashSet: it is a class present inside java.util package which implements methods from Set interface
+ * Duplicates are not allowed
+ * insertion order is not preserved
+ * default initial size is 16
+ */
+public class HashSetTest_4 {
     public static void main(String[] args) {
 
-        HashSet hs=new HashSet();  /// default capacity 16 and LF is 07.5
+        HashSet hs=new HashSet();  /// default capacity 16 and LF(Load Factor)/fill ratio is 0.75
         HashSet hs1=new HashSet(100);  // initial capacity is 100
         HashSet hs2=new HashSet(100,(float)0.90);  //initial capacity is 100 and LF is 0.90
 
@@ -28,6 +34,7 @@ public class HashSetTest {
         hs1.add("Rajeev");
         hs1.add("Pavan");
 
+        // add another collection to hs
         hs.addAll(hs1);
 
         System.out.println("After adding collection : "+hs);

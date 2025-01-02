@@ -1,6 +1,6 @@
-package java_Practice_Set.logicalPrograms;
+package java_Practice_Set.logicalPrograms.StringAndArray;
 
-public class StringCharactersCount {
+public class CountCharactersInString {
     public static void main(String[] args) {
         String s = "I am shivam komawar";
         int count = 0;

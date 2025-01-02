@@ -3,11 +3,20 @@ package java_Practice_Set.collection_Framework;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
-public class LinkedList1 {
+/**
+ * LinkedList :it is a class present inside java.util package which implements methods from list interface
+ * LinkedList is preferred when we have frequent insertion/deletion operations.
+ * every element i.e. node linked together with address
+ * No shifting of element takes place so its faster for insertion and deletion.
+ * duplicates,null are allowed
+ */
+public class LinkedList_3 {
 
     public static void main(String[] args) {
-
+        //LinkedList ll=new LinkedList<>(); heterogeneous data
+        //List ll=new LinkedList<>();
         LinkedList<Integer> ll=new LinkedList<Integer>();
 
         //Add elements in linked list
@@ -16,7 +25,7 @@ public class LinkedList1 {
         ll.add(3);
         ll.add(4);
 
-        System.out.println(ll);
+        System.out.println("print linked list:"+ll);
         System.out.println(ll.size());
 
         //remove object from LL
@@ -43,7 +52,8 @@ public class LinkedList1 {
 
         Collections.sort(ll,Collections.reverseOrder());
         System.out.println("After arranging reverse order "+ll);
-
+        ll.sort(Collections.reverseOrder());
+        System.out.println("Another way to reverse order: "+ll);
         Collections.shuffle(ll);
         System.out.println("After shuffling elements "+ll);
 
@@ -54,7 +64,8 @@ public class LinkedList1 {
 
         ll.removeLast();
         System.out.println(ll);
-
+        ll.removeFirst();
+        System.out.println("remove first :"+ll);
 
 
 
