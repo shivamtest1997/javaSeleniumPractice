@@ -1,7 +1,4 @@
 package java_Practice_Set.OPPs;
-
-import org.checkerframework.checker.units.qual.Area;
-
 /**
  * Interface:Interface is basically a blueprint of a class which contains variables and methods
  * 1.Interface is 100% abstract in nature

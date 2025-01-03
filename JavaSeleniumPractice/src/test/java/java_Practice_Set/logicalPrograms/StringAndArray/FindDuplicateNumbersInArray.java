@@ -2,7 +2,7 @@ package java_Practice_Set.logicalPrograms.StringAndArray;
 
 import java.util.HashSet;
 
-public class FindDuplicatesInArray {
+public class FindDuplicateNumbersInArray {
     public static void main(String[] args) {
         int[] arr={4,5,64,8,1,6,4,7,2,9,7,8,4};
 
@@ -17,6 +17,5 @@ public class FindDuplicatesInArray {
             }
         }
         System.out.println("Array without duplicate "+hs);
-
     }
 }
