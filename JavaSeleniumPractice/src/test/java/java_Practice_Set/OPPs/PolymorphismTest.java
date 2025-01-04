@@ -68,6 +68,10 @@ class Parent {
     public void greet() {
         System.out.println("Hi Good Morning");
     }
+    final public void finalMethod()
+    {
+        System.out.println("final method from parent class");
+    }
 }
 
 class Child1 extends Parent {
@@ -75,6 +79,10 @@ class Child1 extends Parent {
     public void greet() {
         System.out.println("Hello from child one");
     }
+   /* public void finalMethod()   //we can't override final method in java
+    {
+
+    }*/
 }
 
 class Child2 extends Parent {

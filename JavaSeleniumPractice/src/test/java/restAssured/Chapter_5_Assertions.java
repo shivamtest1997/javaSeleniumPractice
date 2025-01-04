@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.*;
  * 3.json-schema-validator
  * we can apply assertions on multiple elements like header,status code and content-type etc
  */
-public class Assertions {
+public class Chapter_5_Assertions {
     @Test
     public void m1()
     {

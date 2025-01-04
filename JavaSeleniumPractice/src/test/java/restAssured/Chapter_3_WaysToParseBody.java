@@ -116,6 +116,14 @@ public class Chapter_3_WaysToParseBody {
                 .extract().response();
         System.out.println(res.asPrettyString());
     }
+    /**
+     * Process to convert java object to byte stream of data is called serialization
+     * we need serialization because it is recommended to configure the values instead of sending whole json body
+     *
+     * The process to convert byte stream of data to json object is called de-serialization
+     *
+     * POJO Class :Plain Old Java Object is class which contains private variables with their corresponding getter and setters
+     */
     @Test
     public void serializationAndDeserialization()
     {
@@ -141,7 +149,9 @@ public class Chapter_3_WaysToParseBody {
                 .then()
                 .extract().response();
 
-        res.prettyPrint();
+        System.out.println(bookingPOJO.getBookingdates().getCheckIn());
+        System.out.println(bookingPOJO.getFirstname());
+        System.out.println(bookingPOJO.getTotalprice());
 
 
     }
