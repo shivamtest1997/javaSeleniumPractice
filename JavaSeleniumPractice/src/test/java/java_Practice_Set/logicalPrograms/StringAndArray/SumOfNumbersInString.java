@@ -1,4 +1,4 @@
-package java_Practice_Set.logicalPrograms;
+package java_Practice_Set.logicalPrograms.StringAndArray;
 
 public class SumOfNumbersInString {
     public static void main(String[] args) {
