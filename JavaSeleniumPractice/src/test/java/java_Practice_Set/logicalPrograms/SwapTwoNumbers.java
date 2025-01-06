@@ -5,18 +5,29 @@ public class SwapTwoNumbers {
 
         int a = 20, b = 40;
 
-        a = a + b;  //a=60
-        b = a - b;  //b=60-40=20
-        a = a - b;  //a=60-20=40
+        // 1. Swap using third variable
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        System.out.println("After swapping numbers a is "+a+" and b is "+b);
 
-        System.out.println(a + " " + b);
+        a=20;
+        b=40;
+        // 2.Swap using two variable
+        a=a+b; //60
+        b=a-b; //20
+        a=a-b; //40
 
-        int p = 20, q = 40;
-        int t;
-        t = p; //20
-        p = q; //40
-        q = t; // 20
-        System.out.println(p + " " + q);
+        System.out.println("After swapping two numbers a is "+a+" and b is "+b);
+
+        a=20;
+        b=40;
+        // 3.Swap using XoR operator
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        System.out.println("After swapping two numbers a is "+a+" and b is "+b);
 
 
     }

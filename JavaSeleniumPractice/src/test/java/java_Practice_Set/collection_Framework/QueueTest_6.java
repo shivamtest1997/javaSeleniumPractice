@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
  * duplicates are allowed
  * Heterogeneous data is not allowed in Priority Queue
  */
-public class QueueTest_5 {
+public class QueueTest_6 {
     public static void main(String[] args) {
 
         PriorityQueue q=new PriorityQueue();
@@ -20,10 +20,13 @@ public class QueueTest_5 {
         q.add("Shivam");
         q.offer("Teacher");
         q.offer("Akshta");
+        //q.offer(5); if we add heterogeneous data we will get ClassCastException
 
-        System.out.println(q);
-        System.out.println(q.peek());
-        System.out.println(q.element());
+        System.out.println(q); //Aditya, Akshta, Shivam, Teacher, Shivam]
+
+        // peek() and element() returns head of queue
+        System.out.println(q.peek());  //Aditya
+        System.out.println(q.element()); //Aditya
 
         q.remove("Teacher");
         System.out.println(q);
