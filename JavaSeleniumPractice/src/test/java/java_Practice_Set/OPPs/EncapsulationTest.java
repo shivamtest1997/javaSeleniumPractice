@@ -1,7 +1,7 @@
 package java_Practice_Set.OPPs;
 
 /**
- * 1.Encapsulation is one the OOPs principle and it refers to wrapping data(variable) and methods
+ * 1.Encapsulation is one of the OOPs principle, and it refers to wrapping data(variable) and methods
  * together into a single unit.
  * 2.In simple terms, encapsulation is about protecting the internal state of an object from outside interference
  * and misuse by using access modifiers and providing controlled access through methods.
@@ -9,7 +9,7 @@ package java_Practice_Set.OPPs;
  * can be access through its public getters and setters method so it is called as data hiding
  * Benefits of Encapsulation:
  *     Control: You can control how the data is accessed or modified.
- *     Security: By restricting direct access to variables, you prevent unauthorized changes or misuse.
+ *     Security: By restricting direct access to variables, you will prevent unauthorized changes or misuse.
  *     Flexibility: You can change the internal implementation of the class without affecting external code.
  *     Maintainability: Easier to modify or debug the class because you can isolate changes to a specific area.
  */

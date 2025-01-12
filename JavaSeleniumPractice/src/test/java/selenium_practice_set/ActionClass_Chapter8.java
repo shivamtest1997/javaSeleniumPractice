@@ -36,7 +36,7 @@ public class ActionClass_Chapter8 {
 
         Actions act=new Actions(driver);
        // act.moveToElement(desktop).moveToElement(mac).click().build().perform();
-        act.moveToElement(desktop).moveToElement(mac).click().perform();
+        act.moveToElement(desktop).moveToElement(mac).click().perform();   //here click() method called from actions class
         driver.findElement(By.xpath("//h2[text()='Desktops']")).isDisplayed();
     }
 
@@ -161,7 +161,7 @@ public class ActionClass_Chapter8 {
     }
 
     /**
-     * This Can be achieve using Keyboard actions
+     * This Can be achieved using Keyboard actions
      */
     @Test
     public void openLinkInNewTab()

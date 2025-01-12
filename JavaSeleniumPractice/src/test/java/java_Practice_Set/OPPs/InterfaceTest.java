@@ -2,8 +2,8 @@ package java_Practice_Set.OPPs;
 /**
  * Interface:Interface is basically a blueprint of a class which contains variables and methods
  * 1.Interface is 100% abstract in nature
- * 2.Methods in interface are by default public and abstract Hence when we are implementing method in class
- *      we need to declare it as public else it will throw an error.
+ * 2.Methods in interface are by default public and abstract Hence when we are implementing these
+ *  methods in implementation class we need to declare it as public else it will throw an error.
  * 3.variables declared in interface are by default public,static and final whether we declare it or not
  *      to access variables in class we can call it by Interface.variableName
  * 4.interface will not have constructor it will throw error if we try to create it

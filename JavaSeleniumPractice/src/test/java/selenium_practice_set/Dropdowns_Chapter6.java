@@ -55,7 +55,7 @@ public class Dropdowns_Chapter6 {
     }
 
     /**
-     *  dropdown options can be located in HTML DOM and in this example tag is button for dropdown
+     *  Bootstrap Dropdown: dropdown options can be located in HTML DOM and in this example tag is button for dropdown
      */
     @Test
     public void bootstrapDropdown()

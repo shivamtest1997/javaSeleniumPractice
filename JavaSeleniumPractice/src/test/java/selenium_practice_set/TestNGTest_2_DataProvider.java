@@ -78,7 +78,7 @@ public class TestNGTest_2_DataProvider {
      *      }
      */
     @DataProvider(name ="dp",indices = {0,2,4})
-    Object[][] loginData() {
+    public Object[][] loginData() {
         //created 2D array which contains data
         // created Object type of array to store data irrespective of its data type
         Object data[][] =

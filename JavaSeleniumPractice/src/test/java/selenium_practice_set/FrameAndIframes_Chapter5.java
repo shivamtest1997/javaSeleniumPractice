@@ -12,7 +12,7 @@ public class FrameAndIframes_Chapter5 {
     WebDriver driver=new EdgeDriver();
     /**
      * driver.switchTo().frame(argument);
-     * argument -->id ,name ,WebElement
+     * argument -->index ,name ,WebElement
      * driver.switchTo().defaultContent() -->switching to main tab
      */
     @Test

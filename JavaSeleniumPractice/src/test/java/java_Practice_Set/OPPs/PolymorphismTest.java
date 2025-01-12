@@ -72,6 +72,10 @@ class Parent {
     {
         System.out.println("final method from parent class");
     }
+    public void extraParent()
+    {
+        System.out.println("extra method from parent class");
+    }
 }
 
 class Child1 extends Parent {
@@ -90,22 +94,32 @@ class Child2 extends Parent {
     public void greet() {
         System.out.println("Hello from child 2");
     }
+    public void extraChild2()
+    {
+        System.out.println("extra method from child 2 class");
+    }
+
 }
 
 public class PolymorphismTest {
 
     public static void main(String[] args) {
         Parent p = new Parent();
-        p.greet(); // parent class method
-
+        p.greet(); // parent class method // Hi Good Morning
 
         Parent p1 = new Child1();
-        p1.greet(); //child1 class method
+        p1.greet(); //child1 class method // Hello from child one
+
         Child1 c1=new Child1();
-        c1.greet(); //child1 class method
+        c1.greet(); //child1 class method //Hello from child one
 
         Child2 c2=new Child2();
-        c2.greet(); //child 2 class method
+        c2.greet(); //child 2 class method //Hello from child 2
+
+        Parent p2=new Child2();
+        p2.greet(); // parent class method //  Hello from child one
+        p2.extraParent(); //extra method from parent class
+      //  p2.extraChild2();  by using parent reference we won't be able to call child2 class method
 
     }
 

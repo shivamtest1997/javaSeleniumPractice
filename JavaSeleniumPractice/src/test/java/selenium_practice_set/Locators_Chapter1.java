@@ -98,13 +98,13 @@ public class Locators_Chapter1 {
      * when developer introduce new element in between then absolute xpath will break and unable to find locator
      * always starts with /--> represent root node
      * do not use attributes
-     * <p>
+     *
      * 2)Relative xpath (partial xpath)//*[@id="abc"]
      * it will directly jump to required element using attributes
      * this is xpath will not impact due to changes in web page
      * starts with //
      * works on attribute
-     * <p>
+     *
      * xpath methods
      */
     @Test
@@ -155,12 +155,12 @@ public class Locators_Chapter1 {
 
         // if tag is like this and there is no inner text <div><div>
         // [contains(text(),'']
-        // [contains(.,''] .represents text
+        // [contains(.,''] .represents text()
 
     }
 
     /**
-     * Xpath Axes
+     * Xpath Axes:
      * Ancestor
      * Parent
      * Self

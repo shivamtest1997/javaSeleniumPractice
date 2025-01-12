@@ -30,6 +30,9 @@ public class TestNGTest_1 {
      *   if we don't provide priority then default priority is 0
      *   if test cases have same priority then test cases will execute based on alphabetical order
      *   we can provide negative numbers in priority
+     *
+     *  Dependency of test
+     *  we can provide dependency of test by dependsOnMethods = {"openApplication"}
      * */
 
     WebDriver driver;
@@ -128,7 +131,7 @@ public class TestNGTest_1 {
         // Assert.assertTrue(false); failed
         // Assert.assertTrue(1==2); failed
         // Assert.assertTrue(1==1); passed
-        // Assert.assertFalse(1=2); passed
+        // Assert.assertFalse(1==2); passed
         // Assert.assertFalse(1=1); Failed
         // Assert.fail() // this will failed test cases without checking validations
     }
@@ -137,7 +140,8 @@ public class TestNGTest_1 {
      * Hard Assert :
      *  if assertion is failed then below lines of code will not execute.
      *  test case will mark as failed immediately
-     *  generally we used hard assertion as last statement so that code test cases will failed if assertion is failed
+     *  generally we used hard assertion as last statement so that code test cases will
+     *  fail if assertion is failed.
      */
     @Test(enabled = false)
     public void hardAssertions()

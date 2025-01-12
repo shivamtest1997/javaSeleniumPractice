@@ -21,10 +21,11 @@ public class Waits_Chapter3 {
     /**
      * Synchronization : element is not available when script is running and webpage is not available or loaded
      * Thread.sleep(milliseconds) -->it is provided by java this is static wait
+     * Selenium contains two waits :
      * 1) implicit wait
      * 2) explicit wait/fluent wait
-     * <p>
-     * NoSuchElementException --> synchronization problem i.e element not present but locator is correct
+     *
+     * NoSuchElementException --> synchronization problem i.e. element not present but locator is correct
      * ElementNotFoundException -->locator is incorrect
      */
     @Test
@@ -107,7 +108,7 @@ public class Waits_Chapter3 {
     @Test
     public void fluentWaitTest() {
         // 1.Declaration
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class);
@@ -119,8 +120,7 @@ public class Waits_Chapter3 {
 
         WebElement textUsername=wait.until(new Function<WebDriver, WebElement>() {
 
-            @Override
-            public WebElement apply(WebDriver driver) {
+              public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath("//input[@name='username']"));
             }
         });

@@ -65,8 +65,8 @@ public class WebDriverMethods_Chapter2 {
          Thread.sleep(4000);
          driver.findElement(By.linkText("OrangeHRM, Inc")).click(); //this will open new window
          Thread.sleep(4000);
-         driver.close();
-         driver.quit();
+         driver.close(); // it will just close child window
+         driver.quit();  // it will close all browser window
      }
     /** conditional methods apply on WebElement
      *  isDisplayed()  -->check element visibility on web page
