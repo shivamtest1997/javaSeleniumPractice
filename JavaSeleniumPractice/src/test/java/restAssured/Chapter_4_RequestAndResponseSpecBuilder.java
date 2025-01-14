@@ -18,7 +18,7 @@ import static io.restassured.RestAssured.*;
  *          -Headers
  *          -baseURI
  *          -Parameters
- * ResponseSpecification:It is a class in Rest assured which provides facility to define commonly
+ * ResponseSpecBuilder:It is a class in Rest assured which provides facility to define commonly
  * used specification related to response
  *         -Validations
  *         -StatusCode

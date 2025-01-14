@@ -17,7 +17,7 @@ public class ArrayListTest_2 {
         //ways to create ArrayList Object
 
 //        ArrayList al=new ArrayList();                        //Heterogeneous data
-//        ArrayList<Integer> al1=new ArrayList<Integer>();     //Homgenious data
+//        ArrayList<Integer> al1=new ArrayList<Integer>();     //Homogeneous data
 //        ArrayList<String> al2=new ArrayList<String>();
 //        List al3=new ArrayList();
 

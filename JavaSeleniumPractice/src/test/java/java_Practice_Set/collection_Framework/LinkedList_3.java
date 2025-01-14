@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * LinkedList :it is a class present inside java.util package which implements methods from list interface
  * LinkedList is preferred when we have frequent insertion/deletion operations.
- * every element i.e. node linked together with address
+ * every element i.e. node linked together with address.
  * No shifting of element takes place,so it's faster for insertion and deletion.
- * duplicates,null are allowed
+ * duplicates,null are allowed.
  */
 public class LinkedList_3 {
 

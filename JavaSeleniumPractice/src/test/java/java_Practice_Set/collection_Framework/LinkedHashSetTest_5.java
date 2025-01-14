@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 
 /**
  * it is a class present inside java.util package which implements methods from set interface
- * duplicated are not allowed
+ * duplicates are not allowed
  * insertion order is preserved.
  * Sorting and shuffling is not possible in HashSet and LinkedHashSet.
  */

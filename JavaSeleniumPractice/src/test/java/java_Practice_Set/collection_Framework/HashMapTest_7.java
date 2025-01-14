@@ -38,7 +38,7 @@ public class HashMapTest_7 {
         System.out.println(hm.containsKey(101)); //true
         System.out.println(hm.containsValue("Marry")); //false
 
-        System.out.println("check for map is empty or not : "+hm.isEmpty()); //fale
+        System.out.println("check for map is empty or not : "+hm.isEmpty()); //false
 
         System.out.println("-----Retrieving keys from Map-------"); // Return keys in set format
         System.out.println(hm.keySet());  // [101, 102, 103, 105]
