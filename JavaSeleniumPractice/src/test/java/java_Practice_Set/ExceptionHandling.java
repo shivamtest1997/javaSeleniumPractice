@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 /**
  * Exception:An unexpected or unplanned event that disturb the normal flow of execution of program.
- * <p>
+ *
  * Throwable(c) -->1.Exception ----1.Checked Exception(Compiler Exception) --exceptions identified by java compiler
  * -I/O Exception
  * -SQL Exception
@@ -15,7 +15,7 @@ import java.util.Scanner;
  * -NumberFormatException
  * -ArrayIndexOutOfBoundException
  * -StringIndexOutOfBoundException ...etc
- * <p>
+ *
  * 2.Error---1.Assertion Error
  * 2.StackOverflow Error
  * 3.VirtualMachineError
@@ -75,7 +75,7 @@ class UncheckedException {
      * purpose of having finally block is to close secured access like in try block we will open DB connection
      * and catch block we will handle that exception and in finally block we will close connection
      * It is useful for cleanup activity
-     * <p>
+     *
      * Exception occurred & catch block handled -->finally block execute
      * Exception occurred & catch block not handled -->finally block will execute
      * Exception not occurred --->finally block will execute
@@ -121,7 +121,7 @@ class CheckedException {
      * we can handle checked exception by two ways
      * 1.try-catch block
      * 2.using throws keyword
-     * he throws keyword doesn't throw exceptions
+     * The throws keyword doesn't throw exceptions
      * but informs the caller of the method that it needs to handle or declare the exception.
      */
     public void m5() throws FileNotFoundException {

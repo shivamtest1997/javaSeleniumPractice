@@ -19,7 +19,6 @@ public class FindFrequencyOfWordInString {
             } else {
                 map.put(word, 1);
             }
-
         }
         for (String key : map.keySet()) {
             System.out.println(key + " " + map.get(key));

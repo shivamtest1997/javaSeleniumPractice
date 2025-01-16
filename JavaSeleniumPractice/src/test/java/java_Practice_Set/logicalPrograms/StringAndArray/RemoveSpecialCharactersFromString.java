@@ -11,5 +11,7 @@ public class RemoveSpecialCharactersFromString {
             }
         }
         System.out.println(s1.toLowerCase());
+        // or
+        System.out.println(s.toLowerCase().replaceAll("[^a-zA-Z0-9]",""));
     }
 }

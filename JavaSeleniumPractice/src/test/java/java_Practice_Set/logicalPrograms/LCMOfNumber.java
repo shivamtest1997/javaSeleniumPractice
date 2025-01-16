@@ -10,7 +10,6 @@ public class LCMOfNumber {
          *
          */
         int num1 = 12, num2 = 18;
-
         // find GCD using for loop
         int gcd = 1;
         for (int i = 1; i <= num1 && i <= num2; i++) {
