@@ -11,13 +11,16 @@ import java.util.List;
  * every element i.e. node linked together with address.
  * No shifting of element takes place,so it's faster for insertion and deletion.
  * duplicates,null are allowed.
+ * Not thread safe
+ * slower for accessing elements as traversal is required
+ *
  */
 public class LinkedList_3 {
 
     public static void main(String[] args) {
         //LinkedList ll=new LinkedList<>(); heterogeneous data
         //List ll=new LinkedList<>();
-        LinkedList<Integer> ll=new LinkedList<Integer>();
+        LinkedList<Integer> ll=new LinkedList<Integer>(); // homogeneous data
 
         //Add elements in linked list
         ll.add(1);

@@ -1,6 +1,7 @@
 package java_Practice_Set.collection_Framework;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * HashSet: it is a class present inside java.util package which implements methods from Set interface
@@ -8,7 +9,7 @@ import java.util.HashSet;
  * insertion order is not preserved
  * default initial size is 16
  */
-public class HashSetTest_4 {
+public class HashSetTest_5 {
     public static void main(String[] args) {
 
         HashSet hs=new HashSet();  // default capacity 16 and LF(Load Factor)/fill ratio is 0.75
@@ -54,6 +55,19 @@ public class HashSetTest_4 {
         hs.removeAll(hs1);
         System.out.println("After removing collection from hs : "+hs); //[0.25, null, A, Shivam, 100, true]
 
+        Iterator<Object> it=hs.iterator();
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+            /*
+            0.25
+            null
+            A
+            Shivam
+            100
+            true
+             */
+        }
 
 
     }

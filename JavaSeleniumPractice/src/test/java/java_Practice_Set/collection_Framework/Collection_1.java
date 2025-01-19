@@ -17,12 +17,12 @@ package java_Practice_Set.collection_Framework;
  *      otherwise it will throw an exception ArrayIndexOutOfBoundException.
  *     -It is not growable in nature.
  *     -data Structure i.e. ready-made method are not available like add(),sort()
- *  5.Collections is class in java from java.util package which contains method like sort()
+ *  5.Collections is the class in java from java.util package which contains method like sort()
  *  Collections.sort()--->we can sort given array list using this method
  */
 
 /**
- *              Collection(I)
+ *                    Collection(I)
  *------------------------------------------------------
  *   List(I)               Set(I)           Queue(I)
  * -----------        --------------     -------------
@@ -42,8 +42,46 @@ package java_Practice_Set.collection_Framework;
  * Queue: Queue is child interface of collection
  *        whenever we want elements prior to process FIFO(first in first out) one after another
  *
- * Map(I) : Map is an interface which represents elements in key-value pair,where key should not be duplicated but values can be.
- * Map(I) ---implemented by -->HashMap(C)---extends-->LinkedHashMap(C)
+ * Map(I) : Map is an interface which represents elements in key-value pair,where key should not
+ * be duplicated but values can be.
+ * Map(I) ---implemented by -->HashMap(C),linkedHashMap(c),TreeMap(c),HashTable(c)
+ *
+ */
+
+/*
+    ArrayList                     LinkedList                            Vector
+
+  1.A dynamic array allowing    1.A doubly linked list           1.A dynamic array similar
+   random access via index      where elements are connected      to arraylist but synchronized for
+                                via pointers                      thread safety
+  2.Fast for accessing elements 2.slower for accessing elements  2.Fast for accessing elements
+   by index                      as traversal is required          by index
+
+  3.insertion and deletion      3.insertion and deletion are     3.insertion and deletion slower
+   is slower as shifting is     faster as only pointers are       similar to arraylist as shifting
+   to be needed after the       adjusted                          is required
+   modified position
+
+  4.Not Thread safe             4.Not thread safe                4.Thread safe due to synchronized
+                                                                   methods but less efficient
+
+  5.use when frequent           5.use when insertion or         6.use only when thread safety is required
+  random access is required     deletion is required
+
+ */
+
+/**
+ *       HashMap                                   HashTable
+ * 1.Not Thread safe,suitable              1.Thread safe as all methods are synchronized
+ *  for single threaded applications        suitable for multithreaded applications
+ *
+ * 2.faster due to no synchronization     2.slower due to synchronization overhead
+ *
+ * 3.Allow one null key and multiple      3.Does not allow null keys or null values
+ *  null values
+ *
+ * 4.Modern and preferred for most use   4.considered legacy rarely used in new use case
+ * case
  */
 
 /**

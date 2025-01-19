@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
  * duplicates are allowed
  * Heterogeneous data is not allowed in Priority Queue
  */
-public class QueueTest_6 {
+public class QueueTest_7 {
     public static void main(String[] args) {
 
         PriorityQueue q=new PriorityQueue();
@@ -27,7 +27,8 @@ public class QueueTest_6 {
         // peek() and element() returns head of queue
         System.out.println(q.peek());  //Aditya
         System.out.println(q.element()); //Aditya
-
+        System.out.println(q.poll());  //Aditya
+        System.out.println(q.size());
         q.remove("Teacher");
         System.out.println(q);
 

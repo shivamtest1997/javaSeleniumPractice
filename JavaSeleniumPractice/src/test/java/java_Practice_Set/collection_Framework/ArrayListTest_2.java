@@ -9,6 +9,9 @@ import java.util.*;
  *  Insertion order is preserved
  *  By default capacity is 10
  *  duplicates are allowed
+ *  insertion and deletion operation is slower as shifting is need after modification of position
+ *  random access via index
+ *  not thread safe
  * Use : ArrayList is preferred for frequent getting(Retrieve) operations
  */
 public class ArrayListTest_2 {
@@ -30,7 +33,7 @@ public class ArrayListTest_2 {
         System.out.println(al); //[Shivam, 200, a, true]
         System.out.println("Size of arraylist "+al.size()); //4
 
-        al.add(2, "test");
+        al.add(2, "test"); // add(index,value) method from list interface
         System.out.println("Arraylist After adding element at index position :"+al);//[Shivam, 200, test, a, true]
 
         al.remove(4);
@@ -44,9 +47,9 @@ public class ArrayListTest_2 {
 
         al.addAll(str); // to store one collection to other
         System.out.println("After adding collection into original arrayList :"+al);//[Shivam, 200, test, a, Rasika, Pratik, Shubham, Rajeev]
-        System.out.println("To retrieve element from third position is :"+al.get(2)); //test
+        System.out.println("To retrieve element from third position is :"+al.get(2)); //test get(index) from list interface
 
-        al.set(3, 'p');
+        al.set(3, 'p'); // replace element
         System.out.println("Arraylist after replacing a with p :"+al); //[Shivam, 200, test, p, Rasika, Pratik, Shubham, Rajeev]
 
         System.out.println("Check element Shivam present into arraylist : "+al.contains("Shivam")); //true
@@ -103,7 +106,9 @@ public class ArrayListTest_2 {
         }
 
         System.out.println("-------print arraylist----");
+
         ArrayList<Double> ddList=new ArrayList<Double>(Arrays.asList(d));
+
         ddList.add(10.5);
         ddList.add(4,5.5);
         System.out.println(ddList);

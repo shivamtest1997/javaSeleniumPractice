@@ -10,7 +10,7 @@ import java.util.LinkedHashSet;
  * insertion order is preserved.
  * Sorting and shuffling is not possible in HashSet and LinkedHashSet.
  */
-public class LinkedHashSetTest_5 {
+public class LinkedHashSetTest_6 {
     public static void main(String[] args) {
 
         LinkedHashSet<Integer> hs=new LinkedHashSet<Integer>();

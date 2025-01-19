@@ -16,7 +16,7 @@ import java.util.Map;
  * values()--return collection of values
  *
  */
-public class HashMapTest_7 {
+public class HashMapTest_8 {
     public static void main(String[] args) {
 
         HashMap<Integer,String> hm=new HashMap<Integer,String>();
