@@ -181,7 +181,7 @@ public class TestNGTest_1 {
     }
   /*
      Dependency Methods
-     1.dependsOnMethods : @Test(dependsOnMethod={"testCaseName1","testCaseName2"})
+     1.dependsOnMethods : @Test(dependsOnMethods={"testCaseName1","testCaseName2"})
                           if test case is failed then all dependent test cases get skipped
  */
 /*  grouping:
