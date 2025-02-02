@@ -33,6 +33,8 @@ public class TestNGTest_1 {
      *
      *  Dependency of test
      *  we can provide dependency of test by dependsOnMethods = {"openApplication"}
+     *
+     *  invocationCount -->This is used to run same test case multiple times
      * */
 
     WebDriver driver;
@@ -41,7 +43,7 @@ public class TestNGTest_1 {
      *  2.Login to application
      *  3.Logout from application
      */
-    @Test(priority = 1)
+    @Test(priority = 1,invocationCount = 2)
     public void openApplication()
     {
         driver=new EdgeDriver();

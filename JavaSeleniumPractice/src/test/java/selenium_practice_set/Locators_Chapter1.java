@@ -71,6 +71,7 @@ public class Locators_Chapter1 {
      * tag.class --> tag.className                    tag is optional
      * tag[attribute]---> tag[attribute=value]
      * tag class attribute -->tag.className[attribute='value']
+     * tag:nth-child(index)--locate element based on index.
      */
     @Test
     public void cssSelector() {
@@ -89,6 +90,9 @@ public class Locators_Chapter1 {
 
         //tag.className[Attribute='value']
         driver.findElement(By.cssSelector("input.search-box-text[placeholder='Search store']")).clear();
+
+        String text=driver.findElement(By.cssSelector("ul label:nth-child(2)")).getText();
+        System.out.println(text);
 
     }
 

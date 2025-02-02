@@ -18,30 +18,45 @@ package java_Practice_Set.OPPs;
  *   (with some common functionality), but you want subclasses to define specific behaviors.
  */
 
-abstract class Animal{
+abstract class Animal {
 
-        abstract void sound(); //abstract class
+    abstract void sound(); //abstract class
 
-        void eat()
-        {
-            System.out.println("eat method from animal class");
-        }
+    void eat() {
+        System.out.println("eat method from animal class");
+    }
 
-      //  Animal a=new Animal(); this line will show an error as object creation is restricted
-}
-class Dog extends Animal
-{
-    public void sound()
-    {
-        System.out.println("Dog barks");
+    static void m1() {
+        System.out.println("m1 static method from abstract class");
+    }
+
+    final void m2() {
+        System.out.println("final m2 method from abstract class");
+    }
+
+    //  Animal a=new Animal(); this line will show an error as object creation is restricted
+    Animal() {
+        System.out.println("constructor from abstract class");
     }
 }
+
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+//    public void m2()  m2()' cannot override method is final
+//    {
+//
+//    }
+}
+
 class Cat extends Animal {
     // Provide implementation for the abstract method
     void sound() {
         System.out.println("Cat meows");
     }
 }
+
 public class AbstractClass {
     public static void main(String[] args) {
         // Cannot instantiate an abstract class
@@ -57,5 +72,10 @@ public class AbstractClass {
 
         cat.sound();  // Output: Cat meows
         cat.eat();    // Output: This animal eats food.
+
+        Animal.m1(); //m1 static method from abstract class
+
+        dog.m2(); //final m2 method from abstract class
+
     }
 }

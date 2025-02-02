@@ -25,8 +25,8 @@ public class HashSetTest_5 {
         hs.add(true);
         hs.add('A');
         hs.add(null);
-        hs.add("Shivam");    // Duplicates are not allowed hence it will ignore
-        hs.add(100);        // Duplicates are not allowed hence it will ignore
+        hs.add("Shivam");    // Duplicates are not allowed hence previous one will ignore
+        hs.add(100);        // Duplicates are not allowed hence previous will ignore
 
         System.out.println(hs); //[0.25, null, A, Shivam, 100, true]
 

@@ -43,7 +43,7 @@ interface Shape {
 
 }
 
-//Class
+//Class circle implements shape interface
 class Circle implements Shape
 {
 
@@ -63,7 +63,7 @@ class Circle implements Shape
             //Shape.width accessible directly using Interface.variableName because static in nature
 
             c.circle(); //abstract method
-            c.square(); //default method
+            c.square(); //default method from shape interface
             Shape.rectangle(); //static method can directly access from interface
             c.triangle(); //method from class
 

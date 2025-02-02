@@ -49,25 +49,28 @@ package java_Practice_Set.collection_Framework;
  */
 
 /*
-    ArrayList                     LinkedList                            Vector
+    ArrayList                     LinkedList                              Vector
 
-  1.A dynamic array allowing    1.A doubly linked list           1.A dynamic array similar
-   random access via index      where elements are connected      to arraylist but synchronized for
-                                via pointers                      thread safety
-  2.Fast for accessing elements 2.slower for accessing elements  2.Fast for accessing elements
-   by index                      as traversal is required          by index
+  1.uses a dynamic array for   1.Uses doubly linked list           1.uses dynamic array for storage
+    storage                     for storage                         synchronized for thread safety
 
-  3.insertion and deletion      3.insertion and deletion are     3.insertion and deletion slower
-   is slower as shifting is     faster as only pointers are       similar to arraylist as shifting
-   to be needed after the       adjusted                          is required
+  2.Fast for accessing elements 2.slower for accessing elements   2.Fast for accessing elements
+   by index                      as traversal is required            by index
+
+  3.insertion and deletion      3.insertion and deletion are      3.insertion and deletion slower
+   is slower as shifting is     faster as only pointers are         similar to arraylist as shifting
+   to be needed after the       adjusted                            is required
    modified position
 
   4.Not Thread safe             4.Not thread safe                4.Thread safe due to synchronized
                                                                    methods but less efficient
 
-  5.use when frequent           5.use when insertion or         6.use only when thread safety is required
-  random access is required     deletion is required
+  5.suitable for applications   5.suitable for application       5.suitable for multithreaded
+  where frequent retrieval is     where insertion or deletion      environments where thread safety
+   required.                      is required.                     is required
 
+  6.Increases its size by 50%  6.Does not use resizing           6.Increase its size by double when
+    when full.                    mechanism.                       full.
  */
 
 /**
@@ -78,7 +81,7 @@ package java_Practice_Set.collection_Framework;
  * 2.faster due to no synchronization     2.slower due to synchronization overhead
  *
  * 3.Allow one null key and multiple      3.Does not allow null keys or null values
- *  null values
+ *  null values.
  *
  * 4.Modern and preferred for most use   4.considered legacy rarely used in new use case
  * case
